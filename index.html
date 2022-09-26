@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:>
+	<head>
+		<meta charset="UTF-8">
+		<title>云计算服务监控</title>
+
+		<style>
+			#demoChart5 {
+				clear: both;
+				font-size: 18px;
+				color: white;
+				float: left;
+			}
+		</style>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				background-color: #0E1C4B;
+			}
+
+			.container {
+				color: white;
+				font-size: 40px;
+				width: 1420px;
+				/* height: 800px; */
+				overflow: hidden;
+				border: 1px solid #0E1C4B;
+				overflow: hidden;
+				margin: 0 auto;
+
+			}
+
+			.top {
+				width: 1420px;
+				height: 100px;
+				background-color: #0E1C4B;
+			}
+
+			.foot {
+				width: 1420px;
+				/* height: 520px; */
+				background-color: #0E1C4B;
+				overflow: hidden;
+			}
+
+			.foot_1 {
+				width: 450px;
+				/* height: 820px; */
+				float: left;
+			}
+
+			.foot_2 {
+				width: 720px;
+				/* height: 820px; */
+				float: left;
+			}
+
+			.foot_3 {
+				width: 100px;
+				/* height: 820px; */
+				float: left;
+			}
+
+			.foot_1_1 {
+				height: 250px;
+				width: 400px;
+				overflow: hidden;
+			}
+
+			.foot_1_2 {
+				/* height: 200px; */
+				width: 400px;
+			}
+
+			.foot_1_2_1 {
+				width: 200px;
+				height: 150px;
+				float: left;
+			}
+
+			.foot_1_2_2 {
+				width: 200px;
+				height: 150px;
+				float: left;
+			}
+
+			.foot_1_2_3 {
+				width: 250px;
+				height: 250px;
+				float: left;
+			}
+
+			.foot_2_1 {
+				width: 720px;
+				height: 250px;
+				/* align:center; */
+			}
+
+			.foot_2_2 {
+				width: 720px;
+				height: 400px;
+				/* clear: both; */
+				overflow: hidden;
+			}
+
+			.foot_2_2_1 {
+
+				width: 320px;
+				height: 400px;
+				/*padding-left: 60px;*/
+				/* margin-left: 40px; */
+				float: left;
+			}
+
+			.foot_2_2_1 table {
+				border: 2px solid #2239A9;
+				height: 360px;
+				width: 280px;
+				border-collapse: collapse;
+
+			}
+
+			.foot_2_2_1 tr {
+				border: 2px solid #2239A9;
+
+			}
+
+			.foot_2_2_1 td {
+				border: 2px solid #2239A9;
+
+			}
+
+			.foot_2_2_1 th {
+				border: 2px solid #2239A9;
+
+			}
+
+			.foot_2_2_2 {
+				width: 400px;
+				height: 400px;
+				float: left;
+				/* margin-left: 170px; */
+			}
+
+			.foot_2_2_2_1 {
+				width: 400px;
+				height: 200px;
+				float: left;
+
+
+
+			}
+
+			.foot_2_2_2_2 {
+				width: 400px;
+				height: 250px;
+				float: left;
+
+
+			}
+
+			.foot_3_1 {
+				width: 300px;
+				height: 250px;
+
+			}
+
+			.foot_3_2 {
+				width: 200px;
+				height: 200px;
+
+			}
+
+			.foot_3_3 {
+				width: 300px;
+				height: 250px;
+
+			}
+
+			/*浮动会破坏父元素，所以要在父元素加上height*/
+			#div {
+				background-image: linear-gradient(to right, #093788, #10245F);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="top">
+				<p align="center">云计算服务监控 </p>
+			</div>
+			<div class="foot">
+				<div class="foot_1">
+					<div class="foot_1_1" id="demoChart"></div>
+					<div class="foot_1_2">
+						<div class="foot_1_2_1" id="demoChart3" style="height:200px ;width:150px"></div>
+						<div class="foot_1_2_2" id="demoChart4" style="height:200px ;width:150px"></div>
+						<div class="foot_1_2_3" id="demoChart8" style="height:200px ;width:400px"></div>
+					</div>
+
+				</div>
+				<div class="foot_2">
+					<div class="foot_2_1" id="demoChart1"></div>
+					<div class="foot_2_2">
+						<div class="foot_2_2_1" id="demoChart5">
+
+							<div id="container1"></div>
+							<div id="div" style="text-align: left;width: 280px; height: 30px;line-height: 32px;font-weight: 800;">任务管理</div>
+							<table>
+
+
+								<tr>
+									<th>类型</th>
+									<th>已应用</th>
+
+								</tr>
+								<tr>
+									<th>MYSQLXXXX001</th>
+									<th align="center">10</th>
+								</tr>
+								<tr>
+									<th>MYSQLXXXX013</th>
+									<th align="center">50</th>
+								</tr>
+								<tr>
+									<th>MONGODB014</th>
+									<th align="center">30</th>
+								</tr>
+								<tr>
+									<th>REDIS023</th>
+									<th align="center">10</th>
+								</tr>
+								<tr>
+									<th>MYSQLXXXX025</th>
+									<th align="center">92</th>
+								</tr>
+								<tr>
+									<th>MONGODB026</th>
+									<th align="center">46</th>
+								</tr>
+								<tr>
+									<th>MYSQLXXXX029</th>
+									<th align="center">35</th>
+								</tr>
+								<tr>
+									<th>REDIS031</th>
+									<th align="center">26</th>
+								</tr>
+							</table>
+						</div>
+						<div class="foot_2_2_2">
+							<div class="foot_2_2_2_1" id="demoChart6"></div>
+							<div class="foot_2_2_2_2" id="demoChart9"></div>
+						</div>
+					</div>
+				</div>
+				<div class="foot_3">
+					<div class="foot_3_1" id="demoChart2"></div>
+					<div class="foot_3_2" id="demoChart7" style="height:200px ;width:180px"></div>
+					<div class="foot_3_3" id="demoChart10"></div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj = document.getElementById("demoChart")
+			let demoChart = echarts.init(demoObj)
+			let option = {
+				title: {
+					text: '任务总量',
+					left: 'left',
+					textStyle: {
+						color: 'white',
+
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false
+					},
+					padding: [10, 310, 5, 10]
+				},
+				xAxis: {
+					type: 'category',
+					boundaryGap: false,
+					data: ['2016-Q4', '', '2017-Q1', '', '2017-Q2', '2017-Q3'],
+					axisLabel:{
+						color:"white"
+					},
+				},
+				yAxis: {
+					type: 'value',
+					axisLabel:{
+						color:"white"
+					},
+					splitLine:{
+						lineStyle:{
+							color:"#192B58"
+						}
+					}
+				},
+				series: [{
+						data: [820, 1420, 600, 1834, 670, 1230],
+						type: 'line',
+						smooth: true,
+						areaStyle: {}
+					},
+					{
+						data: [620, 800, 1200, 1834, 170, 730],
+						type: 'line',
+						smooth: true,
+						areaStyle: {}
+					}
+				]
+			}
+			demoChart.setOption(option)
+		</script>
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj3 = document.getElementById("demoChart3")
+			let demoChart3 = echarts.init(demoObj3)
+			let option3 = {
+				title: {
+					text: '任务分布',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [3, 95, 5, 10]
+				},
+				radar: {
+
+					indicator: [{
+							name: 'A',
+							max: 6500
+						},
+						{
+							name: 'F',
+							max: 16000
+						},
+						{
+							name: 'E',
+							max: 30000
+						},
+						{
+							name: 'D',
+							max: 38000
+						},
+						{
+							name: 'C',
+							max: 52000
+						},
+						{
+							name: 'B',
+							max: 25000
+						}
+					]
+				},
+				series: [{
+					name: 'Budget vs spending',
+					type: 'radar',
+					data: [
+						// {
+						// 	value: [4200, 11000, 16000, 26000, 38000, 18000],
+						// },
+						{
+							value: [5000, 14000, 28000, 35000, 42000, 21000],
+						},
+						{
+							value: [1000, 8000, 11000, 18000, 34000, 16000],
+
+						}
+					]
+				}]
+
+			}
+
+			demoChart3.setOption(option3)
+		</script>
+
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj4 = document.getElementById("demoChart4")
+			let demoChart4 = echarts.init(demoObj4)
+			const gaugeData = [{
+				value: 65,
+				title: {
+					offsetCenter: ['0%', '-30%']
+				},
+				detail: {
+					valueAnimation: true,
+					offsetCenter: ['0%', '-10%']
+				}
+			}];
+			let option4 = {
+				title: {
+					text: '任务成功',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [3, 95, 5, 10]
+				},
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 0,
+					y2: 1,
+					colorStops: [{
+						offset: 0,
+						color: '#006AFF' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#6B3EFF' // 100% 处的颜色
+					}],
+					global: false // 缺省为 false
+				},
+
+				series: [{
+					type: 'gauge',
+					startAngle: 90,
+					endAngle: -270,
+					pointer: {
+						show: false
+					},
+					progress: {
+						show: true,
+						overlap: false,
+						roundCap: true,
+						clip: false,
+						itemStyle: {
+							borderWidth: 1,
+							borderColor: '#464646'
+						}
+					},
+					axisLine: {
+						lineStyle: {
+							width: 10,
+							color:[
+								[1,'#38476F']
+							]
+						},
+						
+					},
+					splitLine: {
+						show: false,
+						distance: 0,
+						length: 10
+					},
+					axisTick: {
+						show: false
+					},
+					axisLabel: {
+						show: false,
+						distance: 50
+					},
+					data: gaugeData,
+					title: {
+						fontSize: 14
+					},
+					detail: {
+						width: 50,
+						height: 14,
+						fontSize: 20,
+						color: 'white',
+						borderColor: 'auto',
+						formatter: '{value}%'
+					}
+				}]
+			}
+			demoChart4.setOption(option4)
+		</script>
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj8 = document.getElementById("demoChart8")
+			let demoChart8 = echarts.init(demoObj8)
+			let option8 = {
+				title: {
+					text: '任务完成率',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [10, 325, 5, 10]
+				},
+
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross',
+						label: {
+							backgroundColor: '#6a7985'
+						}
+					}
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: [{
+					type: 'category',
+					axisLabel:{
+						color:"white"
+					},
+					boundaryGap: false,
+					data: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']
+				}],
+				yAxis: [{
+					type: 'value',
+					axisLabel:{
+						color:"white"
+					},
+					splitLine:{
+						lineStyle:{
+							color:"#192B58"
+						},
+						}
+				}],
+				series: [{
+						type: 'line',
+						stack: 'Total',
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
+						},
+						data: [150, 232, 201, 154, 190, 330, 410, 350],
+						color: {
+							type: 'linear',
+							x: 0,
+							y: 0,
+							x2: 1,
+							y2: 1,
+							colorStops: [{
+								offset: 0,
+								color: '#4630B8' // 0% 处的颜色
+							}, {
+								offset: 1,
+								color: '#1843B8' // 100% 处的颜色
+							}],
+							global: false // 缺省为 false
+						},
+					},
+
+					{
+						type: 'line',
+						stack: 'Total',
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
+						},
+						data: [320, 332, 301, 334, 390, 330, 320, 230]
+
+					}
+				]
+			}
+			demoChart8.setOption(option8)
+		</script>
+
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj6 = document.getElementById("demoChart6")
+			let demoChart6 = echarts.init(demoObj6)
+			let option6 = {
+				title: {
+					text: '平均容量',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [10, 270, 5, 10]
+				},
+				tooltip: {
+					trigger: 'axis'
+				},
+				toolbox: {
+					show: true,
+				},
+				calculable: true,
+				xAxis: [{
+					type: 'category',
+					axisLabel:{
+						color:"white"
+					},
+					data: ['02/03', '02/04', '02/05', '02/06', '02/07']
+				}],
+				yAxis: [{
+					type: 'value',
+					axisLabel:{
+						color:"white"
+					},
+					splitLine:{
+						lineStyle:{
+							color:"#192B58"
+						},
+						}
+				}],
+				series: [{
+
+						type: 'bar',
+						data: [
+							600, 700, 1400, 690, 690
+						],
+						barWidth: 10,
+						//type:'bar',
+						color: '#006AFF'
+					},
+					{
+
+						type: 'bar',
+						data: [
+							1200, 250, 500, 850, 740
+						],
+						barWidth: 10,
+						color: '#00CADF'
+
+					},
+				]
+			}
+			demoChart6.setOption(option6)
+		</script>
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj9 = document.getElementById("demoChart9")
+			let demoChart9 = echarts.init(demoObj9)
+			let option9 = {
+				title: {
+					text: '存储容量',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [10, 300, 5, 10]
+				},
+				dataset: {
+					source: [
+						['score', 'amount', 'product'],
+						[89.3, 40, 'E'],
+						[57.1, 75, 'D'],
+						[74.4, 112, 'C'],
+						[25.1, 455, 'B'],
+						[89.7, 15, 'A']
+					]
+				},
+				xAxis: {
+					name: 'amount'
+				},
+				yAxis: {
+					type: 'category'
+				},
+
+				series: [{
+					type: 'bar',
+					encode: {
+
+						x: 'amount',
+
+						y: 'product'
+					},
+					barWidth: 10,
+					color: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#0070FF',
+						}, {
+							offset: 1,
+							color: '#00C7DD'
+						}],
+						global: false
+
+					}
+				}]
+			}
+			demoChart9.setOption(option9)
+		</script>
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj1 = document.getElementById("demoChart1")
+			let demoChart1 = echarts.init(demoObj1)
+			let option1 = {
+				title: {
+					text: '云计算任务趋势',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [10, 480, 5, 10]
+				},
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross',
+						crossStyle: {
+							color: '#999'
+						}
+					}
+				},
+				xAxis: [{
+					type: 'category',
+					axisLabel:{
+						color:"white"
+					},
+					data: ['01/01', '', '02/01', '', '03/01', '', '04/01', '', '05/01', '', '06/01', '', '07/01', '', '08/01', '',
+						'09/01', '', '10/01', '', '11/01'
+					],
+					axisPointer: {
+						type: 'shadow'
+					}
+				}],
+				yAxis: [
+					{
+						type: 'value',
+						axisLabel:{
+							color:"white"
+						},
+						splitLine:{
+							lineStyle:{
+								color:"#192B58"
+							}
+						},
+			
+						
+						//min: 0,
+						max: 4000,
+						interval: 1000
+					},
+					{
+						type: '',
+						min: 0,
+						max: 0,
+						interval: 0,
+					}
+				],
+				series: [
+
+					{
+						type: 'bar',
+						tooltip: {
+							valueFormatter: function(value) {
+								return value + ' ml';
+							}
+						},
+						data: [
+							900, 800, 850, 1200, 1800, 3200, 2900, 1900, 1400, 1600, 1300, 1700, 1900, 1600, 1750, 2000, 1950, 2700, 2500,
+							1500, 1100
+						],
+						barWidth: 8,
+						itemStyle: {
+							color: "#00AEE7",
+							borderRadius: [50, 50, 0, 0]
+						},
+					},
+					{
+						//name: 'Temperature',
+						type: 'line',
+						yAxisIndex: 1,
+						tooltip: {
+							valueFormatter: function(value) {
+								return value + ' °C';
+							}
+						},
+						data: [1000, 900, 950, 1300, 1900, 3300, 3000, 2000, 1600, 1700, 1400, 1800, 2000, 1700, 1850, 2100, 2050, 2800,
+							2600, 1600, 1200
+						],
+
+					}
+
+				]
+			}
+			demoChart1.setOption(option1)
+		</script>
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj7 = document.getElementById("demoChart7")
+			let demoChart7 = echarts.init(demoObj7)
+			const gaugeData1 = [{
+				value: 80,
+				title: {
+					offsetCenter: ['0%', '-30%']
+				},
+				detail: {
+					valueAnimation: true,
+					offsetCenter: ['0%', '-10%']
+				}
+			}];
+			let option7 = {
+				title: {
+					text: 'CPU利用率',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false
+					},
+					padding: [5, 180, 5, 10]
+				},
+				color: {
+					type: 'linear',
+					x: 0,
+					y: 0,
+					x2: 0,
+					y2: 1,
+					colorStops: [{
+						offset: 0,
+						color: '#006AFF' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: '#6B3EFF' // 100% 处的颜色
+					}],
+					global: false
+				},
+
+				series: [{
+					type: 'gauge',
+					startAngle: 90,
+					endAngle: -270,
+					pointer: {
+						show: false
+					},
+					progress: {
+						show: true,
+						overlap: false,
+						roundCap: true,
+						clip: false,
+						itemStyle: {
+							borderWidth: 1,
+							borderColor: '#464646'
+						}
+					},
+					axisLine: {
+						lineStyle: {
+							width: 10,
+							color:[
+								[1,'#38476F']
+							]
+						}
+					},
+					splitLine: {
+						show: false,
+						distance: 0,
+						length: 10
+					},
+					axisTick: {
+						show: false
+					},
+					axisLabel: {
+						show: false,
+						distance: 50
+					},
+					data: gaugeData1,
+					title: {
+						fontSize: 14
+					},
+					detail: {
+						width: 50,
+						height: 14,
+						fontSize: 20,
+						color: 'white',
+						borderColor: 'auto',
+						formatter: '{value}%'
+					}
+				}]
+			}
+			demoChart7.setOption(option7)
+		</script>
+
+		<script src="./echarts.js"></script>
+		<script>
+			let demoObj10 = document.getElementById("demoChart10")
+			let demoChart10 = echarts.init(demoObj10)
+			let option10 = {
+				title: {
+					text: '内存利用率',
+					left: 'left',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [10, 250, 5, 10]
+				},
+				xAxis: {
+					type: 'category',
+					axisLabel:{
+						color:"white"
+					},
+					boundaryGap: false,
+					data: ['2016-Q4', '', '2017-Q1', '', '2017-Q2', '2017-Q3']
+				},
+				yAxis: {
+					type: 'value',
+					axisLabel:{
+						color:"white"
+					},
+					splitLine:{
+						lineStyle:{
+							color:"#192B58"
+						},
+						}
+				},
+				series: [{
+						data: [820, 1420, 600, 1834, 670, 1230],
+						type: 'line',
+						smooth: true,
+						areaStyle: {}
+					},
+					{
+						data: [720, 800, 1200, 1834, 170, 730],
+						type: 'line',
+						smooth: true,
+						areaStyle: {}
+					}
+				]
+			}
+			demoChart10.setOption(option10)
+		</script>
+
+		<script>
+			let demoObj2 = document.getElementById("demoChart2")
+			let demoChart2 = echarts.init(demoObj2)
+			let option2 = {
+				title: {
+					text: '云计算总资源',
+					textStyle: {
+						color: 'white'
+					},
+					borderColor: "#0A3483",
+					backgroundColor: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 1,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#093788' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#14205C' // 100% 处的颜色
+						}],
+						global: false // 缺省为 false
+					},
+					padding: [10, 250, 5, 10],
+					left: 'left'
+				},
+				xAxis: {
+					type: 'category',
+					axisLabel:{
+						color:"white"
+					},
+					boundaryGap: false,
+					data: ['2016-Q4', '', '2017-Q1', '', '2017-Q2', '2017-Q3']
+				},
+				yAxis: {
+					type: 'value',
+					axisLabel:{
+						color:"white"
+					},
+					splitLine:{
+						lineStyle:{
+							color:"#192B58"
+						},
+						}
+				},
+				series: [{
+						data: [820, 1420, 600, 1834, 670, 1230],
+						type: 'line',
+						areaStyle: {}
+					},
+					{
+						data: [620, 800, 1200, 1834, 170, 730],
+						type: 'line',
+						areaStyle: {}
+					}
+				]
+			}
+			demoChart2.setOption(option2)
+		</script>
+	</body>
+</html>
